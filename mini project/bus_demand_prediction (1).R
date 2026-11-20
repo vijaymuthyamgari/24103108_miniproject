@@ -11,10 +11,21 @@
 # Change this path only if your dataset is stored elsewhere.
 project_folder <- getwd()
 
-input_file <- file.path(
-  project_folder,
-  "Dataset_D_Chennai_Hub_combined_data.csv"
-)
+input_file <- file.path(project_folder, "Dataset_D_Chennai_Hub_combined_data.csv")
+
+if (!file.exists(input_file)) {
+  input_file <- file.path(
+    project_folder,
+    "mini project",
+    "Dataset_D_Chennai_Hub_combined_data.csv"
+  )
+}
+
+if (!file.exists(input_file)) {
+  stop("Dataset file not found: ", input_file)
+}
+
+project_folder <- dirname(input_file)
 
 
 
